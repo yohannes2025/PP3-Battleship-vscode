@@ -1,1 +1,1 @@
-web: gunicorn pp3-battleship-vscode.wsgi --log-file -
+web: gunicorn pp3-battleship-vscode:app
