@@ -205,19 +205,23 @@ def play_game(computer_board, player_board):
 def get_valid_input(prompt, min_value, max_value):
     """Get a valid integer input from the user within a specified range."""
     while True:
-        user_input = input(prompt).strip()
-        if not user_input:  # Check for empty input
-            print("Input cannot be empty. Please try again.")
-            continue
-
         try:
+            user_input = input(prompt).strip()
+            if not user_input:  # Check for empty input
+                print("Input cannot be empty. Please try again.")
+                continue
+
             value = int(user_input)
             if min_value <= value <= max_value:
                 return value
             else:
-                print(f"Input must be between {min_value} and {max_value}. Please try again.")
+                print(
+                    f"Input must be between {min_value} and {max_value}. Please try again.")
         except ValueError:
             print("Invalid input. Please enter an integer.")
+        except EOFError:  # Catch EOFError
+            print("No input was provided. Exiting the game.")
+            exit(0)  # Exit the program or handle it as needed
 
 
 def is_valid_name(name):
